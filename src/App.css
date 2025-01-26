@@ -136,3 +136,42 @@ h2 {
   color: #333;
   margin-top: 20px;
 }
+
+/*  */
+
+/* Cart Popup */
+.cart-popup .modal-dialog {
+  max-height: 80vh; /* Limit max height */
+  width: 100%; /* Allow full width */
+  max-width: 500px; /* Limit width */
+}
+
+.cart-popup .modal-content {
+  border-radius: 10px;
+  position: relative;
+}
+
+/* Backdrop Styling */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  z-index: 1040; /* Ensures it's below the modal */
+}
+
+/* Optional: Add a blur effect for backdrop */
+.backdrop::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 version=%221.1%22 width=%22200%22 height=%22200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22white%22 fill-opacity=%22.8%22/%3E%3C/svg%3E")
+    repeat;
+  pointer-events: none; /* Prevent interaction with backdrop */
+  filter: blur(5px); /* Apply the blur effect */
+}

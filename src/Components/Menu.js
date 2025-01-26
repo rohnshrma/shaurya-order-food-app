@@ -5,16 +5,21 @@ const Menu = ({ menuItems, addToCart }) => {
   const [subCategoryFilter, setSubCategoryFilter] = useState("");
   const [vegNonVegFilter, setVegNonVegFilter] = useState("");
 
-  const filteredItems = menuItems.filter((item) => {
-    return (
-      ((categoryFilter === "" || item.category === categoryFilter) &&
-        (subCategoryFilter === "" ||
-      item.subCategory === subCategoryFilter) && 
-      (vegNonVegFilter === "" ||
-        item.vegNonVeg === vegNonVegFilter)
-    );
-  });
+  const filteredItems = menuItems
+    .filter((item) => {
+      return (
+        (categoryFilter === "" || item.category === categoryFilter) &&
+        (subCategoryFilter === "" || item.subCategory === subCategoryFilter) &&
+        (vegNonVegFilter === "" || item.vegNonVeg === vegNonVegFilter)
+      );
+    })
+    .reduce((acc, item) => {
+      acc[item.subCategory] = acc[item.subCategory] || [];
+      acc[item.subCategory].push(item);
+      return acc;
+    }, {});
 
+    
   const groupedItems = menuItems.reduce((acc, item) => {
     acc[item.subCategory] = acc[item.subCategory] || [];
     acc[item.subCategory].push(item);
