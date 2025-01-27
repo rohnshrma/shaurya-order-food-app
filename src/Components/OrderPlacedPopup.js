@@ -38,7 +38,7 @@ const OrderPlacedPopup = ({ onClose }) => {
             <div className="modal-body text-center">
               <p>
                 Your order has been placed successfully! Please proceed to the
-                counter for payment.
+                counter for payment. 👍🏽
               </p>
             </div>
             <div className="modal-footer">
