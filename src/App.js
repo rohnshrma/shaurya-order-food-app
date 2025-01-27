@@ -7,6 +7,7 @@ import CartPopup from "./Components/CartPopup";
 import OrderPopupDetails from "./Components/OrderPopupDetails";
 import PaymentPopup from "./Components/PaymentPopup";
 import OrderPlacedPopup from "./Components/OrderPlacedPopup";
+import OnlinePaymentModal from "./Components/OnlinePaymentModel";
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -14,6 +15,7 @@ function App() {
   const [showOrderDetails, setShowOrderDetails] = useState(false);
   const [showPaymentPopup, setShowPaymentPopup] = useState(false);
   const [showOrderPlacedPopup, setShowOrderPlacedPopup] = useState(false);
+  const [showOnlinePaymentModel, setshowOnlinePaymentModel] = useState(false);
 
   const addToCart = (item) => {
     const exisitingItem = cart.find((cartItem) => cartItem.id === item.id);
@@ -88,11 +90,23 @@ function App() {
             setShowPaymentPopup(false);
             setShowOrderPlacedPopup(true);
           }}
+          onProceedToPayOnline={() => {
+            setShowPaymentPopup(false);
+            setshowOnlinePaymentModel(true);
+          }}
         />
       )}
 
       {showOrderPlacedPopup && (
         <OrderPlacedPopup onClose={() => setShowOrderPlacedPopup(false)} />
+      )}
+
+      {showOnlinePaymentModel && (
+        <OnlinePaymentModal
+          onClose={() => {
+            setshowOnlinePaymentModel(false);
+          }}
+        />
       )}
     </div>
   );
