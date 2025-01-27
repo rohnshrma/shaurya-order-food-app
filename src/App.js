@@ -57,7 +57,8 @@ function App() {
   };
   return (
     <div className="App container">
-      <h1>Restaurant Menu </h1>
+      <h1 className="text-center">Abc Foods</h1>
+      <hr />
       <Menu menuItems={menuData} addToCart={addToCart} />
       {showCart && (
         <CartPopup
